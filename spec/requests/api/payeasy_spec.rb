@@ -85,7 +85,7 @@ describe 'PayEasy API behavior' do
     let(:response_body) { File.open("spec/fixtures/payeasy_notice_response.xml", "rb").read.strip }
 
     it "works" do
-      request = Sbpayment::API::Payeasy::NoticeRequest.new(request_header, request_body)
+      request = Sbpayment::CallbackFactory.request(request_header, request_body)
       expect(request.body[:merchant_id]).to eq '99999'
       expect(request.body[:service_id]).to eq '999'
       expect(request.body[:sps_transaction_id]).to eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -99,7 +99,7 @@ describe 'PayEasy API behavior' do
       expect(request.body[:request_date]).to eq '20091010125959'
       expect(request.body[:sps_hashcode]).to eq request.generate_sps_hashcode
 
-      response = Sbpayment::API::Payeasy::NoticeResponse.new
+      response = request.response_class.new
       response.res_result = 'OK'
       expect(response.to_xml).to eq response_body
     end
@@ -119,7 +119,7 @@ describe 'PayEasy API behavior' do
     let(:response_body) { File.open("spec/fixtures/payeasy_cancel_response.xml", "rb").read.strip }
 
     it "works" do
-      request = Sbpayment::API::Payeasy::CancelRequest.new(request_header, request_body)
+      request = Sbpayment::CallbackFactory.request(request_header, request_body)
       expect(request.body[:service_id]).to eq '999'
       expect(request.body[:sps_transaction_id]).to eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       expect(request.body[:tracking_id]).to eq '12345678901234'
@@ -127,7 +127,7 @@ describe 'PayEasy API behavior' do
       expect(request.body[:request_date]).to eq '20091010125959'
       expect(request.body[:sps_hashcode]).to eq request.generate_sps_hashcode
 
-      response = Sbpayment::API::Payeasy::CancelResponse.new
+      response = request.response_class.new
       response.res_result = 'OK'
       expect(response.to_xml).to eq response_body
     end
