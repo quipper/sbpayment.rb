@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Webcvs API behavior' do
+describe 'PayEasy API behavior' do
   before do
     Sbpayment.configure do |x|
       x.sandbox = true
