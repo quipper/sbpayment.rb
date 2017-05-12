@@ -95,6 +95,15 @@ Action Name                                              | sps-api-request id | 
 ソフトバンクまとめて支払い B 継続課金(定期) 確定処理     | `ST02-00201-405`   | `Sbpayment::API::Softbank::CommitRequest`        |
 ソフトバンクまとめて支払い(B)継続課金(定期) 取消返金要求 | `ST02-00303-405`   | `Sbpayment::API::Softbank::CancelRefundRequest`  |
 
+###### Payeasy
+
+Action Name		| sps-api-request id | Request class                             |
+---			| ---                | ---                                       |
+PayEasy 決済要求	| `ST01-00101-703`   | `Sbpayment::API::Payeasy::PaymentRequest` |
+PayEasy 入金通知	| `NT01-00103-703`   | `Sbpayment::API::Payeasy::NoticeRequest`  |
+PayEasy キャンセル通知	| `NT01-00104-703`   | `Sbpayment::API::Payeasy::CancelRequest`  |
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
