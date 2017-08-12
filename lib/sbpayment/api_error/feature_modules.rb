@@ -43,10 +43,6 @@ module Sbpayment
       def type
         self.class.type
       end
-
-      def retryable?
-        type.retryable?
-      end
     end
   end
 end
