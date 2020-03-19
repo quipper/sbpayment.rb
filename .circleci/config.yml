@@ -2,7 +2,6 @@ references: &common
   working_directory: ~/sbpayment.rb
   steps:
     - checkout
-    - run: gem update bundler
     - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
     - run: bundle exec rspec
 
@@ -12,14 +11,20 @@ jobs:
     <<: *common
     docker:
       - image: circleci/ruby:2.4.6-browsers
+        environment:
+          BUNDLER_VERSION: 2.1.4
   build_ruby255:
     <<: *common
     docker:
       - image: circleci/ruby:2.5.5-browsers
+        environment:
+          BUNDLER_VERSION: 2.1.4
   build_ruby263:
     <<: *common
     docker:
       - image: circleci/ruby:2.6.3-browsers
+        environment:
+          BUNDLER_VERSION: 2.1.4
 
 workflows:
   version: 2
