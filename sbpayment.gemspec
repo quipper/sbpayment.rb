@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'vcr', '~> 5.1.0'
   spec.add_development_dependency 'webmock', '~> 3.11.2'
   spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'timecop'
   spec.add_development_dependency 'selenium-webdriver'
 end
