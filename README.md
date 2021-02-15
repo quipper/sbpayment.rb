@@ -135,7 +135,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 When you faced any troubles in setup (e.g. failed to build gem native extension), please try to use Docker as below.
 
 ```sh
-docker run --volume="$(pwd)/:/usr/src/sbpayment.rb/" --workdir='/usr/src/sbpayment.rb/' -it 'circleci/ruby:latest-browsers' '/bin/bash'
+ docker container run --user=root --volume="$(pwd)/:/usr/src/sbpayment.rb/" --workdir='/usr/src/sbpayment.rb/' -it 'circleci/ruby:latest-browsers' '/bin/bash'
 ```
 
 ## Contributing
