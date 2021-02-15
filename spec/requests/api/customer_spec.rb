@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'Customer API behavior' do
   let(:cust_code) { SecureRandom.hex }
 
