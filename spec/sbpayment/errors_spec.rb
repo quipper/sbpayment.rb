@@ -1,18 +1,18 @@
 require_relative '../spec_helper'
 
-describe Sbpayment::Error do
+RSpec.describe Sbpayment::Error do
   subject { described_class.superclass }
 
   it { is_expected.to equal(StandardError) }
 end
 
-context Sbpayment::ParserError do
+RSpec.describe Sbpayment::ParserError do
   subject { described_class }
 
   it { is_expected.to be < Sbpayment::Error }
 end
 
-describe Sbpayment::APIError do
+RSpec.describe Sbpayment::APIError do
   subject(:defined_api_error) { Sbpayment::APIError.parse '10123203' }
   subject(:undefined_api_error) { Sbpayment::APIError.parse '11122333' }
 
@@ -161,14 +161,14 @@ describe Sbpayment::APIError do
   end
 end
 
-describe 'Specific API error' do
+RSpec.describe 'Specific API error' do
   it 'has ancestors as APIKnownError > API000Error > API00099Error' do
     expect(Sbpayment::API101Error.superclass).to equal(Sbpayment::APIKnownError)
     expect(Sbpayment::API10123Error.superclass).to equal(Sbpayment::API101Error)
   end
 end
 
-describe Sbpayment::APIUnknownError do
+RSpec.describe Sbpayment::APIUnknownError do
   subject(:unknown_root) { Sbpayment::APIUnknownError }
 
   it 'is a subclass of Error' do
@@ -198,7 +198,7 @@ describe Sbpayment::APIUnknownError do
   end
 end
 
-describe Sbpayment::APIError::PaymentMethod do
+RSpec.describe Sbpayment::APIError::PaymentMethod do
   describe '.fetch' do
     subject { Sbpayment::APIError::PaymentMethod.fetch '405' }
     it { is_expected.to be_an_instance_of(Sbpayment::APIError::PaymentMethod) }
@@ -221,7 +221,7 @@ describe Sbpayment::APIError::PaymentMethod do
   end
 end
 
-describe Sbpayment::APIError::Type do
+RSpec.describe Sbpayment::APIError::Type do
   describe '.fetch' do
     subject { Sbpayment::APIError::Type.fetch '40' }
     it { is_expected.to be_an_instance_of(Sbpayment::APIError::Type) }

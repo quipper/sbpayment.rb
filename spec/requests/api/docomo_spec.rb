@@ -1,7 +1,4 @@
-require 'spec_helper'
-require 'securerandom'
-
-describe 'Docomo API behavior' do
+RSpec.describe 'Docomo API behavior' do
   describe 'AuthorizationRequest' do
     around do |e|
       VCR.use_cassette 'docomo-authorization' do
