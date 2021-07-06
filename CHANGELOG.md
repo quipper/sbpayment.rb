@@ -1,6 +1,7 @@
 ## Unreleased
 
 ### Breaking Changes
+- Add support for Ruby 3.0
 - Drop support for Ruby 2.4
 
 ## v0.15.0
